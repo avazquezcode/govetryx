@@ -15,3 +15,6 @@ test: |
 
 html-cov: 
 	go test -v ./... -covermode=count -coverprofile=coverage.out && go tool cover -func=coverage.out && go tool cover -html=coverage.out
+
+run-txt:
+	go run cmd/filerunner/main.go test.txt

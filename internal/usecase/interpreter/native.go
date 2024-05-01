@@ -31,7 +31,7 @@ func (n FnSleep) Call(interpreter *Interpreter, arguments []interface{}) (interf
 	}
 
 	// Sleep
-	time.Sleep(time.Duration(milliSeconds))
+	time.Sleep(time.Duration(float64(time.Millisecond) * milliSeconds))
 	return nil, nil
 }
 
