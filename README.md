@@ -28,10 +28,10 @@ Some things I changed in comparison to the _Lox_ language:
 
 Coming next:
 
-- [] Support `break` and `continue` in while loop
-- [] Add support for structs
-- [] Add support for arrays
-- [] Add more native functions
+- [ ] Support `break` and `continue` in while loop
+- [ ] Add support for structs
+- [ ] Add support for arrays
+- [ ] Add more native functions
 
 ## About the interpreter
 This interpreter is coded in Golang. It's implemented as a Tree-Walk Interpreter (trying to follow the ideas and same implementation from the _Java_ implementation in the *Crafting Interpreters* book, so all the credit goes to Bob Nystrom here - althought I tried out some slightly different implementations in some parts just for fun & to experiment a bit on this topic).
