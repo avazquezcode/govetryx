@@ -1,6 +1,6 @@
 # GoVetryx
 [![Go](https://github.com/avazquezcode/govetryx/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/avazquezcode/govetryx/actions/workflows/ci.yml)
-![Coverage](https://img.shields.io/badge/Coverage-81.2%25-brightgreen)
+![Coverage](https://img.shields.io/badge/Coverage-81.4%25-brightgreen)
 
 > [!NOTE]  
 > This is a really simple language, just developed for fun (not production ready).
