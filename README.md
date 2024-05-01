@@ -2,7 +2,8 @@
 [![Go](https://github.com/avazquezcode/govetryx/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/avazquezcode/govetryx/actions/workflows/ci.yml)
 ![Coverage](https://img.shields.io/badge/Coverage-81.2%25-brightgreen)
 
-> [!NOTE] This is a really simple language, just developed for fun (not production ready).
+> [!NOTE]  
+> This is a really simple language, just developed for fun (not production ready).
 
 ## Intro
 GoVetryx is an interpreter written in Golang for the _Vetryx_ language.
