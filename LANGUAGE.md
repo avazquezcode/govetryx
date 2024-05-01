@@ -206,9 +206,9 @@ x = a(1, 2)
 print x # will print 3
 ```
 
-### Clojures
+### Closures
 
-Clojures are supported in the language.
+Closures are supported in the language.
 
 ```python
 fn buildCounter() {
