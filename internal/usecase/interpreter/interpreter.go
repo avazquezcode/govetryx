@@ -234,11 +234,13 @@ func (i *Interpreter) VisitLogicalExpression(expression *ast.LogicalExpression) 
 }
 
 func (i *Interpreter) VisitWhileStatement(statement *ast.WhileStatement) error {
+	env := i.env
 	// Handle the break panic
 	defer func() {
 		if err := recover(); err != nil {
-			if _, isBreak := err.(*Break); isBreak {
-				panic(Break{})
+			if _, isBreak := err.(Break); isBreak {
+				i.env = env
+				return
 			}
 		}
 	}()

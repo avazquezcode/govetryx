@@ -150,6 +150,12 @@ func TestInterpret(t *testing.T) {
 			expectedStdout: "0\n1\n",
 			expectedErr:    false,
 		},
+		// while with break - doing something else after
+		"while with break, printing variable after": {
+			src:            "dec a = 0\n while (a < 3) {\nprint a\n a = a + 1\n if a == 2 {\n break \n}} \n print a",
+			expectedStdout: "0\n1\n2\n",
+			expectedErr:    false,
+		},
 		// closures
 		"closures": {
 			src:            "fn a() { fn b() { return 1\n } return b()\n } print a()\n",
