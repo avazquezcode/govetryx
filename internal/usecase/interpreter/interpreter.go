@@ -12,6 +12,8 @@ import (
 	"github.com/avazquezcode/govetryx/internal/domain/types"
 )
 
+type Break struct{}
+
 type Interpreter struct {
 	env    *Env
 	global *Env
@@ -232,6 +234,15 @@ func (i *Interpreter) VisitLogicalExpression(expression *ast.LogicalExpression) 
 }
 
 func (i *Interpreter) VisitWhileStatement(statement *ast.WhileStatement) error {
+	// Handle the break panic
+	defer func() {
+		if err := recover(); err != nil {
+			if _, isBreak := err.(*Break); isBreak {
+				panic(Break{})
+			}
+		}
+	}()
+
 	for {
 		evalCondition, err := statement.Condition.Accept(i)
 		if err != nil {
@@ -299,6 +310,10 @@ func (i *Interpreter) VisitReturnStatement(statement *ast.ReturnStatement) error
 
 	// return with no value
 	panic(NewReturnObj(nil))
+}
+
+func (i *Interpreter) VisitBreakStatement(statement *ast.BreakStatement) error {
+	panic(Break{}) // follow same logic as with the return
 }
 
 func (i *Interpreter) Resolve(expression ast.Expression, depth int) {

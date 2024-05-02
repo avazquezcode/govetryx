@@ -34,4 +34,5 @@ type StatementVisitor interface {
 	VisitPrintStatement(statement *PrintStatement) error
 	VisitBlockStatement(statement *BlockStatement) error
 	VisitWhileStatement(statement *WhileStatement) error
+	VisitBreakStatement(statement *BreakStatement) error
 }

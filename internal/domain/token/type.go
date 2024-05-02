@@ -6,6 +6,7 @@ type Type int
 const (
 	// Loop
 	While Type = iota
+	Break
 
 	// Conditions
 	If
@@ -71,6 +72,7 @@ var ReservedWordsMapper = map[string]Type{
 	"if":     If,
 	"else":   Else,
 	"while":  While,
+	"break":  Break,
 	"print":  Print,
 	"return": Return,
 	"null":   Null,

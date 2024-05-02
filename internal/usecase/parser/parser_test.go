@@ -302,6 +302,21 @@ func TestParse(t *testing.T) {
 					ast.NewBlockStatement(nil)),
 			},
 		},
+		"while loop with break": {
+			src: "while 1 == 1 {\nbreak\n}",
+			expected: []ast.Statement{
+				ast.NewWhileStatement(
+					ast.NewBinaryExpression(
+						ast.NewLiteralExpression(float64(1)),
+						token.NewToken(token.EqualEqual, "==", nil, 1),
+						ast.NewLiteralExpression(float64(1))),
+					ast.NewBlockStatement(
+						[]ast.Statement{
+							ast.NewBreakStatement(2),
+						},
+					)),
+			},
+		},
 		"function declaration": {
 			src: "fn a() {}",
 			expected: []ast.Statement{
