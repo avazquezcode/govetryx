@@ -26,10 +26,9 @@ Some things I changed in comparison to the _Lox_ language:
 - [x] Changed some reserved words & chars used for some operators
 - [x] Added support for short variable declarator (eg: `a := 1`)
 - [x] Added support for sleep, min and max native fns
+- [x] Support `break` and `continue` in while loop
 
 Coming next:
-
-- [ ] Support `break` and `continue` in while loop
 - [ ] Add support for structs
 - [ ] Add support for arrays
 - [ ] Add more native functions
