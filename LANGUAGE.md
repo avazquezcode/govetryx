@@ -17,7 +17,7 @@ This language only support basic types:
 | Operator | Description |
 | ----------- | ----------- |
 | string | "hello world" |
-| number | Eg: 1. *Note*: _(** All numbers are floats for now)_ |
+| number | Eg: 1. *Note*: _(*All numbers are floats for now*)_ |
 | bool | true / false |
 | null | null value |
 
@@ -71,7 +71,7 @@ This language only support basic types:
 
 ## Reserved Words
 
-| Operator | 
+| Word | 
 | ----------- |
 | while |
 | break |
