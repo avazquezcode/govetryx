@@ -49,6 +49,11 @@ type (
 		Name  *token.Token
 		Value Expression
 	}
+
+	// BreakStatement is the struct used to represent the break statement.
+	BreakStatement struct {
+		Line int
+	}
 )
 
 func NewBlockStatement(smts []Statement) *BlockStatement {
@@ -136,4 +141,14 @@ func NewWhileStatement(condition Expression, body Statement) *WhileStatement {
 
 func (s *WhileStatement) Accept(visitor StatementVisitor) error {
 	return visitor.VisitWhileStatement(s)
+}
+
+func NewBreakStatement(line int) *BreakStatement {
+	return &BreakStatement{
+		Line: line,
+	}
+}
+
+func (s *BreakStatement) Accept(visitor StatementVisitor) error {
+	return visitor.VisitBreakStatement(s)
 }

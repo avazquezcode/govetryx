@@ -144,6 +144,12 @@ func TestInterpret(t *testing.T) {
 			expectedStdout: "0\n1\n2\n",
 			expectedErr:    false,
 		},
+		// while with break
+		"while with break": {
+			src:            "dec a = 0\n while (a < 3) {print a\n a = a + 1\nif a == 2 {\nbreak\n}}",
+			expectedStdout: "0\n1\n",
+			expectedErr:    false,
+		},
 		// closures
 		"closures": {
 			src:            "fn a() { fn b() { return 1\n } return b()\n } print a()\n",

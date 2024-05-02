@@ -173,6 +173,9 @@ func (p *Parser) statement() (ast.Statement, error) {
 	case token.Print:
 		p.increment()
 		return p.printStatement()
+	case token.Break:
+		p.increment()
+		return p.breakStatement()
 	case token.LeftBrace:
 		p.increment()
 
@@ -270,6 +273,17 @@ func (p *Parser) returnStatement() (ast.Statement, error) {
 	}
 
 	return ast.NewReturnStatement(returnLine, value), nil
+}
+
+// breakStatement parses a break statement.
+func (p *Parser) breakStatement() (ast.Statement, error) {
+	breakLine := p.previous().Line
+	_, err := p.consume(token.NewLine)
+	if err != nil {
+		return nil, fmt.Errorf("expected a new line or EOF after the break: %w", err)
+	}
+
+	return ast.NewBreakStatement(breakLine), nil
 }
 
 // print parses a print statement.

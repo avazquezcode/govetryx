@@ -68,6 +68,10 @@ func (r *Resolver) VisitWhileStatement(v *ast.WhileStatement) error {
 	return v.Body.Accept(r)
 }
 
+func (r *Resolver) VisitBreakStatement(v *ast.BreakStatement) error {
+	return nil
+}
+
 func (r *Resolver) VisitBinaryExpression(v *ast.BinaryExpression) (interface{}, error) {
 	_, err := v.Left.Accept(r)
 	if err != nil {
