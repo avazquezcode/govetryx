@@ -176,6 +176,9 @@ func (p *Parser) statement() (ast.Statement, error) {
 	case token.Break:
 		p.increment()
 		return p.breakStatement()
+	case token.Continue:
+		p.increment()
+		return p.continueStatement()
 	case token.LeftBrace:
 		p.increment()
 
@@ -284,6 +287,17 @@ func (p *Parser) breakStatement() (ast.Statement, error) {
 	}
 
 	return ast.NewBreakStatement(breakLine), nil
+}
+
+// continueStatement parses a continue statement.
+func (p *Parser) continueStatement() (ast.Statement, error) {
+	continueLine := p.previous().Line
+	_, err := p.consume(token.NewLine)
+	if err != nil {
+		return nil, fmt.Errorf("expected a new line or EOF after the continue: %w", err)
+	}
+
+	return ast.NewContinueStatement(continueLine), nil
 }
 
 // print parses a print statement.

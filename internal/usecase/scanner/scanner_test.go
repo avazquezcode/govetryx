@@ -223,7 +223,7 @@ func TestScan(t *testing.T) {
 			},
 		},
 		"reserved words": {
-			src: `dec fn true false if else while print return null break`,
+			src: `dec fn true false if else while print return null break continue`,
 			expected: []*token.Token{
 				token.NewToken(token.VarDeclarator, "dec", nil, 1),
 				token.NewToken(token.Fn, "fn", nil, 1),
@@ -236,6 +236,7 @@ func TestScan(t *testing.T) {
 				token.NewToken(token.Return, "return", nil, 1),
 				token.NewToken(token.Null, "null", nil, 1),
 				token.NewToken(token.Break, "break", nil, 1),
+				token.NewToken(token.Continue, "continue", nil, 1),
 				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},

@@ -54,6 +54,11 @@ type (
 	BreakStatement struct {
 		Line int
 	}
+
+	// ContinueStatement is the struct used to represent the continue statement.
+	ContinueStatement struct {
+		Line int
+	}
 )
 
 func NewBlockStatement(smts []Statement) *BlockStatement {
@@ -151,4 +156,14 @@ func NewBreakStatement(line int) *BreakStatement {
 
 func (s *BreakStatement) Accept(visitor StatementVisitor) error {
 	return visitor.VisitBreakStatement(s)
+}
+
+func NewContinueStatement(line int) *ContinueStatement {
+	return &ContinueStatement{
+		Line: line,
+	}
+}
+
+func (s *ContinueStatement) Accept(visitor StatementVisitor) error {
+	return visitor.VisitContinueStatement(s)
 }

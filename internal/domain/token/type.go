@@ -7,6 +7,7 @@ const (
 	// Loop
 	While Type = iota
 	Break
+	Continue
 
 	// Conditions
 	If
@@ -65,15 +66,16 @@ const (
 
 // ReservedWordsMapper is a map of our reserved words.
 var ReservedWordsMapper = map[string]Type{
-	"dec":    VarDeclarator,
-	"fn":     Fn,
-	"true":   True,
-	"false":  False,
-	"if":     If,
-	"else":   Else,
-	"while":  While,
-	"break":  Break,
-	"print":  Print,
-	"return": Return,
-	"null":   Null,
+	"dec":      VarDeclarator,
+	"fn":       Fn,
+	"true":     True,
+	"false":    False,
+	"if":       If,
+	"else":     Else,
+	"while":    While,
+	"break":    Break,
+	"continue": Continue,
+	"print":    Print,
+	"return":   Return,
+	"null":     Null,
 }

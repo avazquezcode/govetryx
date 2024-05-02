@@ -1,18 +1,8 @@
-dec i = 1
-
-fn a() {
-    dec b = 1
-    while i < 100 {
-        if i % 2 == 0 {
-            print i
-        }
-        if i == 5 {
-            break
-        }
-        i = i + 1
+dec a = 10
+while (a < 20) {
+    a = a + 1
+    if a == 15 {
+        continue # in this case the 10 will not be printed to stdout
     }
-
-    print b
+    print a
 }
-
-a()

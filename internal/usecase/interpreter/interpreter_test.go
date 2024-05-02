@@ -156,6 +156,18 @@ func TestInterpret(t *testing.T) {
 			expectedStdout: "0\n1\n2\n",
 			expectedErr:    false,
 		},
+		// while with continue
+		"while with continue": {
+			src:            "dec a = 0\n while (a < 4) {\n a = a + 1\nif a == 2 {\ncontinue\n} \n print a\n}",
+			expectedStdout: "1\n3\n4\n",
+			expectedErr:    false,
+		},
+		// while with continue - doing something else after
+		"while with continue, printing variable after": {
+			src:            "dec a = 0\n while (a < 4) {\n a = a + 1\nif a == 2 {\ncontinue\n} \n print a\n} \n print a",
+			expectedStdout: "1\n3\n4\n4\n",
+			expectedErr:    false,
+		},
 		// closures
 		"closures": {
 			src:            "fn a() { fn b() { return 1\n } return b()\n } print a()\n",
