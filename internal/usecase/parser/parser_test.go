@@ -317,6 +317,21 @@ func TestParse(t *testing.T) {
 					)),
 			},
 		},
+		"while loop with continue": {
+			src: "while 1 == 1 {\ncontinue\n}",
+			expected: []ast.Statement{
+				ast.NewWhileStatement(
+					ast.NewBinaryExpression(
+						ast.NewLiteralExpression(float64(1)),
+						token.NewToken(token.EqualEqual, "==", nil, 1),
+						ast.NewLiteralExpression(float64(1))),
+					ast.NewBlockStatement(
+						[]ast.Statement{
+							ast.NewContinueStatement(2),
+						},
+					)),
+			},
+		},
 		"function declaration": {
 			src: "fn a() {}",
 			expected: []ast.Statement{

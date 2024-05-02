@@ -69,6 +69,22 @@ This language only support basic types:
 | min(X, Y) | returns min |
 | max(X, Y) | returns max |
 
+## Reserved Words
+
+| Operator | 
+| ----------- |
+| while |
+| break |
+| continue |
+| if |
+| else |
+| dec |
+| fn |
+| return |
+| print |
+| null |
+| true |
+| false |
 
 ## Comments
 
@@ -164,9 +180,32 @@ while a < 20 {
 You can also wrap the condition with parentheses:
 
 ```python
+dec a = 10
 while (a < 20) {
     print a # will print the value of "a" in the current iteration
     a = a + 1
+}
+```
+
+You can use break to exit the loop:
+
+```python
+dec a = 10
+while (a < 20) {
+    break # will exit the loop inmediately
+}
+```
+
+You can use continue to move to next iteration of the loop:
+
+```python
+dec a = 10
+while (a < 20) {
+    a = a + 1
+    if a == 15 {
+        continue # in this case the 15 will not be printed to stdout
+    }
+    print a
 }
 ```
 

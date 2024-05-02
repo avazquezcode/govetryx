@@ -72,6 +72,10 @@ func (r *Resolver) VisitBreakStatement(v *ast.BreakStatement) error {
 	return nil
 }
 
+func (r *Resolver) VisitContinueStatement(v *ast.ContinueStatement) error {
+	return nil
+}
+
 func (r *Resolver) VisitBinaryExpression(v *ast.BinaryExpression) (interface{}, error) {
 	_, err := v.Left.Accept(r)
 	if err != nil {

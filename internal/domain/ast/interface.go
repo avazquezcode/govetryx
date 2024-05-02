@@ -35,4 +35,5 @@ type StatementVisitor interface {
 	VisitBlockStatement(statement *BlockStatement) error
 	VisitWhileStatement(statement *WhileStatement) error
 	VisitBreakStatement(statement *BreakStatement) error
+	VisitContinueStatement(statement *ContinueStatement) error
 }

@@ -1,6 +1,7 @@
 package interpreter
 
 import (
+	"errors"
 	"fmt"
 	"io"
 
@@ -12,7 +13,13 @@ import (
 	"github.com/avazquezcode/govetryx/internal/domain/types"
 )
 
-type Break struct{}
+// Break and continue are defined like errors, to simplify implementation
+type Break struct {
+	error
+}
+type Continue struct {
+	error
+}
 
 type Interpreter struct {
 	env    *Env
@@ -235,16 +242,6 @@ func (i *Interpreter) VisitLogicalExpression(expression *ast.LogicalExpression) 
 
 func (i *Interpreter) VisitWhileStatement(statement *ast.WhileStatement) error {
 	env := i.env
-	// Handle the break panic
-	defer func() {
-		if err := recover(); err != nil {
-			if _, isBreak := err.(Break); isBreak {
-				i.env = env
-				return
-			}
-		}
-	}()
-
 	for {
 		evalCondition, err := statement.Condition.Accept(i)
 		if err != nil {
@@ -255,7 +252,21 @@ func (i *Interpreter) VisitWhileStatement(statement *ast.WhileStatement) error {
 			break
 		}
 
-		statement.Body.Accept(i)
+		err = statement.Body.Accept(i)
+		if err != nil {
+			i.env = env // This is necessary, so the environment is properly reseted. Same as we do in "executeBlock()".
+
+			if errors.Is(err, Break{}) {
+				break
+			}
+
+			if errors.Is(err, Continue{}) {
+				continue
+			}
+
+			// If is not break or continue, we return the real error
+			return err
+		}
 	}
 
 	return nil
@@ -315,7 +326,11 @@ func (i *Interpreter) VisitReturnStatement(statement *ast.ReturnStatement) error
 }
 
 func (i *Interpreter) VisitBreakStatement(statement *ast.BreakStatement) error {
-	panic(Break{}) // follow same logic as with the return
+	return Break{}
+}
+
+func (i *Interpreter) VisitContinueStatement(statement *ast.ContinueStatement) error {
+	return Continue{}
 }
 
 func (i *Interpreter) Resolve(expression ast.Expression, depth int) {
