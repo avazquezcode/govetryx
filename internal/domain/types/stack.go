@@ -19,13 +19,13 @@ func (s *Stack) Pop() {
 }
 
 func (s *Stack) Peek() interface{} {
-	return s.GetElementAt(s.Length() - 1)
+	return s.getElementAt(s.Length() - 1)
 }
 
 func (s *Stack) Length() int {
 	return len(*s)
 }
 
-func (s *Stack) GetElementAt(index int) interface{} {
+func (s *Stack) getElementAt(index int) interface{} {
 	return (*s)[index]
 }
