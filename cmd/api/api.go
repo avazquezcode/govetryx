@@ -22,8 +22,7 @@ func main() {
 	router.Use(contentTypeMiddleware)
 
 	c := cors.New(cors.Options{
-		AllowedOrigins:   []string{os.Getenv("ALLOWED_ORIGIN")},
-		AllowCredentials: true,
+		AllowedOrigins: []string{os.Getenv("ALLOWED_ORIGIN")},
 	})
 
 	handler := c.Handler(router)
