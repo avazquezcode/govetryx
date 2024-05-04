@@ -1,4 +1,4 @@
-package adapter
+package interpreter
 
 import (
 	"bytes"
@@ -11,6 +11,7 @@ import (
 	"github.com/avazquezcode/govetryx/internal/usecase/scanner"
 )
 
+// runCode triggers the interpreter to run the code.
 func runCode(code []rune, stdout io.Writer) error {
 	interpreter := interpreterpkg.NewInterpreter(stdout)
 	s := scanner.NewScanner(code)
