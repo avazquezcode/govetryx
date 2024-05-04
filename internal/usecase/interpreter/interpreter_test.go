@@ -180,6 +180,16 @@ func TestInterpret(t *testing.T) {
 			expectedStdout: "2\n",
 			expectedErr:    false,
 		},
+		// break outside loop
+		"break outside loop": {
+			src:         "dec a = 1\n break\n",
+			expectedErr: true,
+		},
+		// continue outside loop
+		"continue outside loop": {
+			src:         "dec a = 1\n continue\n",
+			expectedErr: true,
+		},
 	}
 
 	for desc, test := range tests {
@@ -197,7 +207,7 @@ func TestInterpret(t *testing.T) {
 			resolver := interpreter_pkg.NewResolver(interpreter)
 			err = resolver.Resolve(statements)
 			if err != nil {
-				t.Fail()
+				assert.Equal(t, test.expectedErr, err != nil)
 			}
 
 			err = interpreter.Interpret(statements)

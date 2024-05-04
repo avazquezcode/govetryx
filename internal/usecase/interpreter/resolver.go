@@ -12,7 +12,8 @@ import (
 type Resolver struct {
 	interpreter    *Interpreter
 	stack          types.Stack
-	insideFunction bool // this indicates if we are inside a function
+	insideFunction bool // indicates if we are inside a function
+	insideLoop     bool // indicates if we are inside a loop
 }
 
 func NewResolver(interpreter *Interpreter) *Resolver {
@@ -65,14 +66,26 @@ func (r *Resolver) VisitWhileStatement(v *ast.WhileStatement) error {
 		return err
 	}
 
-	return v.Body.Accept(r)
+	r.insideLoop = true
+
+	err = v.Body.Accept(r)
+
+	r.insideLoop = false
+
+	return err
 }
 
 func (r *Resolver) VisitBreakStatement(v *ast.BreakStatement) error {
+	if !r.insideLoop {
+		return fmt.Errorf("cannot execute a break statement outside a loop")
+	}
 	return nil
 }
 
 func (r *Resolver) VisitContinueStatement(v *ast.ContinueStatement) error {
+	if !r.insideLoop {
+		return fmt.Errorf("cannot execute a continue statement outside a loop")
+	}
 	return nil
 }
 
