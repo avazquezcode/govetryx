@@ -4,11 +4,11 @@ import (
 	"log"
 	"os"
 
-	"github.com/avazquezcode/govetryx/internal/adapter"
+	"github.com/avazquezcode/govetryx/internal/adapter/interpreter"
 )
 
 func main() {
-	err := adapter.RunFile(os.Args[1], os.Stdout)
+	err := interpreter.RunFile(os.Args[1], os.Stdout)
 	if err != nil {
 		log.Fatalf("failed interpreting the script: %s", err.Error())
 	}

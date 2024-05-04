@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/avazquezcode/govetryx/internal/adapter"
+	"github.com/avazquezcode/govetryx/internal/adapter/interpreter"
 )
 
 type interpretRequest struct {
@@ -25,7 +25,7 @@ func InterpretHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	output, err := adapter.RunCode(request.SourceCode)
+	output, err := interpreter.RunCode(request.SourceCode)
 	if err != nil {
 		jsonResponse(w, fmt.Sprintf("error on the interpreter: %s", err.Error()), http.StatusBadRequest)
 		return
