@@ -125,7 +125,7 @@ func (s *Scanner) scanSingleChar(char rune) {
 	}
 }
 
-// scanMatchableChars handle the scanning of chars that can be matched with succesive chars to form a composite token.
+// scanMatchableChars handle the scanning of chars that can be matched with successive chars to form a composite token.
 func (s *Scanner) scanMatchableChars(char rune) {
 	switch char {
 	case '<':
