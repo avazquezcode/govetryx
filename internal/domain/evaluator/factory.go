@@ -9,7 +9,7 @@ import (
 func NewBinaryEvaluator(left interface{}, operator *token.Token, right interface{}) (Evaluator, error) {
 	switch operator.Type {
 	case token.Minus:
-		return &Substraction{left: left, right: right}, nil
+		return &Subtraction{left: left, right: right}, nil
 	case token.Plus:
 		return &Addition{left: left, right: right}, nil
 	case token.Star:

@@ -28,7 +28,7 @@ This language only support basic types:
 | Operator | Description |
 | ----------- | ----------- |
 | + | Sum two numbers, _or concat strings_ |
-| - | Substract two numbers |
+| - | Subtract two numbers |
 | * | Multiply two numbers |
 | / | Divide two numbers |
 | % | Modulus between two numbers |

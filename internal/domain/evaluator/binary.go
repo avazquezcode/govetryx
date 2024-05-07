@@ -44,8 +44,8 @@ type (
 		right interface{}
 	}
 
-	// Substraction evaluates the substraction between left and right (eg: left-right).
-	Substraction struct {
+	// Subtraction evaluates the subtraction between left and right (eg: left-right).
+	Subtraction struct {
 		left  interface{}
 		right interface{}
 	}
@@ -113,7 +113,7 @@ func (a *Lower) Evaluate() (interface{}, error) {
 	return nil, fmt.Errorf("type is invalid")
 }
 
-func (a *Substraction) Evaluate() (interface{}, error) {
+func (a *Subtraction) Evaluate() (interface{}, error) {
 	if isNumber := isNumber(a.left, a.right); isNumber {
 		return a.left.(float64) - a.right.(float64), nil
 	}

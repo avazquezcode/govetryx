@@ -250,37 +250,37 @@ func TestMinus(t *testing.T) {
 		want    interface{}
 		wantErr bool
 	}{
-		"substraction that returns a positive value": {
+		"subtraction that returns a positive value": {
 			left:    float64(2),
 			right:   float64(1),
 			want:    float64(1),
 			wantErr: false,
 		},
-		"substraction that returns a positive value with decimal": {
+		"subtraction that returns a positive value with decimal": {
 			left:    float64(2.5),
 			right:   float64(1),
 			want:    float64(1.5),
 			wantErr: false,
 		},
-		"substraction that returns zero": {
+		"subtraction that returns zero": {
 			left:    float64(2.5),
 			right:   float64(2.5),
 			want:    float64(0),
 			wantErr: false,
 		},
-		"substraction that returns a negative value": {
+		"subtraction that returns a negative value": {
 			left:    float64(1),
 			right:   float64(2),
 			want:    float64(-1),
 			wantErr: false,
 		},
-		"substraction that returns a negative value with decimal": {
+		"subtraction that returns a negative value with decimal": {
 			left:    float64(1),
 			right:   float64(2.5),
 			want:    float64(-1.5),
 			wantErr: false,
 		},
-		"substraction with input that is not valid": {
+		"subtraction with input that is not valid": {
 			left:    "text",
 			right:   float64(2.5),
 			want:    nil,

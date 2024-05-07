@@ -49,7 +49,7 @@ func TestInterpret(t *testing.T) {
 			expectedStdout: "1\n",
 			expectedErr:    false,
 		},
-		"substraction of 2 values": {
+		"subtraction of 2 values": {
 			src:            "print 4 - 2\n",
 			expectedStdout: "2\n",
 			expectedErr:    false,

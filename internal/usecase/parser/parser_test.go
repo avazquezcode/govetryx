@@ -79,7 +79,7 @@ func TestParse(t *testing.T) {
 						ast.NewLiteralExpression(float64(1)))),
 			},
 		},
-		"substraction of two numbers": {
+		"subtraction of two numbers": {
 			src: "1 - 1\n",
 			expected: []ast.Statement{
 				ast.NewExpressionStatement(
