@@ -1,6 +1,7 @@
 # GoVetryx
 [![Go](https://github.com/avazquezcode/govetryx/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/avazquezcode/govetryx/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/avazquezcode/govetryx/graph/badge.svg?token=BU2ZL47MNK)](https://codecov.io/gh/avazquezcode/govetryx)
+<a href="https://goreportcard.com/report/github.com/avazquezcode/govetryx"><img src="https://goreportcard.com/badge/github.com/avazquezcode/govetryx" alt="Go Report Card" /></a>
 
 > [!NOTE]  
 > This is a really simple language, just developed for fun (not production ready).
