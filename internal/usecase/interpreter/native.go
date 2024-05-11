@@ -17,7 +17,7 @@ func (n FnClock) Arity() int {
 }
 
 func (n FnClock) Call(interpreter *Interpreter, arguments []interface{}) (interface{}, error) {
-	return float64(time.Now().UnixNano()), nil
+	return float64(time.Now().UnixMilli()), nil
 }
 
 func (n FnSleep) Arity() int {
