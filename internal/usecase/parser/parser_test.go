@@ -23,7 +23,7 @@ func TestParse(t *testing.T) {
 			expected: nil,
 		},
 		"variable declaration without value": {
-			src: "dec a\n",
+			src: "dec a;",
 			expected: []ast.Statement{
 				ast.NewVariableStatement(
 					token.NewToken(token.Identifier, "a", nil, 1),
@@ -31,7 +31,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"variable declaration": {
-			src: "dec a = 1\n",
+			src: "dec a = 1;",
 			expected: []ast.Statement{
 				ast.NewVariableStatement(
 					token.NewToken(token.Identifier, "a", nil, 1),
@@ -39,7 +39,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"variable declaration of string": {
-			src: "dec a = \"hello\"\n",
+			src: "dec a = \"hello\";",
 			expected: []ast.Statement{
 				ast.NewVariableStatement(
 					token.NewToken(token.Identifier, "a", nil, 1),
@@ -47,7 +47,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"variable declaration of boolean (true)": {
-			src: "dec a = true\n",
+			src: "dec a = true;",
 			expected: []ast.Statement{
 				ast.NewVariableStatement(
 					token.NewToken(token.Identifier, "a", nil, 1),
@@ -55,7 +55,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"variable declaration of boolean (false)": {
-			src: "dec a = false\n",
+			src: "dec a = false;",
 			expected: []ast.Statement{
 				ast.NewVariableStatement(
 					token.NewToken(token.Identifier, "a", nil, 1),
@@ -63,7 +63,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"variable declaration of null": {
-			src: "dec a = null\n",
+			src: "dec a = null;",
 			expected: []ast.Statement{
 				ast.NewVariableStatement(
 					token.NewToken(token.Identifier, "a", nil, 1),
@@ -71,7 +71,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"sum of two numbers": {
-			src: "1 + 1\n",
+			src: "1 + 1;",
 			expected: []ast.Statement{
 				ast.NewExpressionStatement(
 					ast.NewBinaryExpression(ast.NewLiteralExpression(float64(1)),
@@ -80,7 +80,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"subtraction of two numbers": {
-			src: "1 - 1\n",
+			src: "1 - 1;",
 			expected: []ast.Statement{
 				ast.NewExpressionStatement(
 					ast.NewBinaryExpression(ast.NewLiteralExpression(float64(1)),
@@ -89,7 +89,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"multiplication of two numbers": {
-			src: "1 * 1\n",
+			src: "1 * 1;",
 			expected: []ast.Statement{
 				ast.NewExpressionStatement(
 					ast.NewBinaryExpression(ast.NewLiteralExpression(float64(1)),
@@ -98,7 +98,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"division of two numbers": {
-			src: "1 / 1\n",
+			src: "1 / 1;",
 			expected: []ast.Statement{
 				ast.NewExpressionStatement(
 					ast.NewBinaryExpression(ast.NewLiteralExpression(float64(1)),
@@ -107,7 +107,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"modulus operation between two numbers": {
-			src: "1 % 1\n",
+			src: "1 % 1;",
 			expected: []ast.Statement{
 				ast.NewExpressionStatement(
 					ast.NewBinaryExpression(ast.NewLiteralExpression(float64(1)),
@@ -116,7 +116,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"equality": {
-			src: "1 == 1\n",
+			src: "1 == 1;",
 			expected: []ast.Statement{
 				ast.NewExpressionStatement(
 					ast.NewBinaryExpression(ast.NewLiteralExpression(float64(1)),
@@ -125,7 +125,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"not equal": {
-			src: "1 <> 1\n",
+			src: "1 <> 1;",
 			expected: []ast.Statement{
 				ast.NewExpressionStatement(
 					ast.NewBinaryExpression(ast.NewLiteralExpression(float64(1)),
@@ -134,7 +134,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"greater": {
-			src: "1 > 1\n",
+			src: "1 > 1;",
 			expected: []ast.Statement{
 				ast.NewExpressionStatement(
 					ast.NewBinaryExpression(ast.NewLiteralExpression(float64(1)),
@@ -143,7 +143,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"greater or equal": {
-			src: "1 >= 1\n",
+			src: "1 >= 1;",
 			expected: []ast.Statement{
 				ast.NewExpressionStatement(
 					ast.NewBinaryExpression(ast.NewLiteralExpression(float64(1)),
@@ -152,7 +152,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"lower": {
-			src: "1 < 1\n",
+			src: "1 < 1;",
 			expected: []ast.Statement{
 				ast.NewExpressionStatement(
 					ast.NewBinaryExpression(ast.NewLiteralExpression(float64(1)),
@@ -161,7 +161,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"lower or equal": {
-			src: "1 <= 1\n",
+			src: "1 <= 1;",
 			expected: []ast.Statement{
 				ast.NewExpressionStatement(
 					ast.NewBinaryExpression(
@@ -171,7 +171,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"not": {
-			src: "!1\n",
+			src: "!1;",
 			expected: []ast.Statement{
 				ast.NewExpressionStatement(
 					ast.NewUnaryExpression(
@@ -180,7 +180,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"negation": {
-			src: "-1\n",
+			src: "-1;",
 			expected: []ast.Statement{
 				ast.NewExpressionStatement(
 					ast.NewUnaryExpression(
@@ -189,7 +189,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"grouping": {
-			src: "(1+1)*2\n",
+			src: "(1+1)*2;",
 			expected: []ast.Statement{
 				ast.NewExpressionStatement(
 					ast.NewBinaryExpression(
@@ -202,7 +202,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"and": {
-			src: "(1 && 2)\n",
+			src: "(1 && 2);",
 			expected: []ast.Statement{
 				ast.NewExpressionStatement(
 					ast.NewGroupingExpression(
@@ -213,7 +213,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"or": {
-			src: "(1 || 2)\n",
+			src: "(1 || 2);",
 			expected: []ast.Statement{
 				ast.NewExpressionStatement(
 					ast.NewGroupingExpression(
@@ -224,7 +224,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"assignment": {
-			src: "a = 1\n",
+			src: "a = 1;",
 			expected: []ast.Statement{
 				ast.NewExpressionStatement(
 					ast.NewAssignmentExpression(
@@ -233,7 +233,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"assignment with variable declaration (short var declarator)": {
-			src: "a := \"hello\"\n",
+			src: "a := \"hello\";",
 			expected: []ast.Statement{
 				ast.NewVariableStatement(
 					token.NewToken(token.Identifier, "a", nil, 1),
@@ -303,7 +303,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"while loop with break": {
-			src: "while 1 == 1 {\nbreak\n}",
+			src: "while 1 == 1 {break;}",
 			expected: []ast.Statement{
 				ast.NewWhileStatement(
 					ast.NewBinaryExpression(
@@ -312,13 +312,13 @@ func TestParse(t *testing.T) {
 						ast.NewLiteralExpression(float64(1))),
 					ast.NewBlockStatement(
 						[]ast.Statement{
-							ast.NewBreakStatement(2),
+							ast.NewBreakStatement(1),
 						},
 					)),
 			},
 		},
 		"while loop with continue": {
-			src: "while 1 == 1 {\ncontinue\n}",
+			src: "while 1 == 1 {continue;}",
 			expected: []ast.Statement{
 				ast.NewWhileStatement(
 					ast.NewBinaryExpression(
@@ -327,7 +327,7 @@ func TestParse(t *testing.T) {
 						ast.NewLiteralExpression(float64(1))),
 					ast.NewBlockStatement(
 						[]ast.Statement{
-							ast.NewContinueStatement(2),
+							ast.NewContinueStatement(1),
 						},
 					)),
 			},
@@ -354,7 +354,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"function declaration with some body": {
-			src: "fn a(b, c) { dec a = 1\n }",
+			src: "fn a(b, c) { dec a = 1; }",
 			expected: []ast.Statement{
 				ast.NewFunctionStatement(
 					token.NewToken(token.Identifier, "a", nil, 1),
@@ -370,7 +370,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"function declaration with some body and return": {
-			src: "fn a(b, c) { dec a = 1\n return a\n }",
+			src: "fn a(b, c) { dec a = 1; return a; }",
 			expected: []ast.Statement{
 				ast.NewFunctionStatement(
 					token.NewToken(token.Identifier, "a", nil, 1),
@@ -383,20 +383,20 @@ func TestParse(t *testing.T) {
 							token.NewToken(token.Identifier, "a", nil, 1),
 							ast.NewLiteralExpression(float64(1))),
 						ast.NewReturnStatement(
-							2,
-							ast.NewVariableExpression(token.NewToken(token.Identifier, "a", nil, 2))),
+							1,
+							ast.NewVariableExpression(token.NewToken(token.Identifier, "a", nil, 1))),
 					}),
 			},
 		},
 		"print": {
-			src: "print 1\n",
+			src: "print 1;",
 			expected: []ast.Statement{
 				ast.NewPrintStatement(
 					ast.NewLiteralExpression(float64(1))),
 			},
 		},
 		"call function": {
-			src: "a()\n",
+			src: "a();",
 			expected: []ast.Statement{
 				ast.NewExpressionStatement(
 					ast.NewCallExpression(
@@ -406,7 +406,7 @@ func TestParse(t *testing.T) {
 			},
 		},
 		"call function with args": {
-			src: "a(b, c)\n",
+			src: "a(b, c);",
 			expected: []ast.Statement{
 				ast.NewExpressionStatement(
 					ast.NewCallExpression(
@@ -452,19 +452,19 @@ func TestParse(t *testing.T) {
 			expectedErr: true,
 		},
 		"missing variable name": {
-			src:         "dec = 1\n",
+			src:         "dec = 1;",
 			expectedErr: true,
 		},
 		"invalid variable initializer": {
-			src:         "dec a = #\n",
+			src:         "dec a = #;",
 			expectedErr: true,
 		},
 		"invalid right operand in comparison": {
-			src:         "a > %\n",
+			src:         "a > %;",
 			expectedErr: true,
 		},
 		"invalid right operand in equality comparison": {
-			src:         "a == %\n",
+			src:         "a == %;",
 			expectedErr: true,
 		},
 		"missing opening parentheses after while": {
@@ -500,15 +500,15 @@ func TestParse(t *testing.T) {
 			expectedErr: true,
 		},
 		"wrong return statement": {
-			src:         "fn a() {return }\n",
+			src:         "fn a() {return}",
 			expectedErr: true,
 		},
 		"wrong first argument in fn call": {
-			src:         "a(>)\n",
+			src:         "a(>);",
 			expectedErr: true,
 		},
 		"missing argument after comma in fn call": {
-			src:         "a(1,)\n",
+			src:         "a(1,);",
 			expectedErr: true,
 		},
 		"missing right parentheses in fn call with args": {
@@ -516,23 +516,23 @@ func TestParse(t *testing.T) {
 			expectedErr: true,
 		},
 		"wrong assignment": {
-			src:         "a = \n",
+			src:         "a = ;",
 			expectedErr: true,
 		},
 		"wrong assignment 2 (invalid value)": {
-			src:         "a = >\n",
+			src:         "a = >;",
 			expectedErr: true,
 		},
 		"printing something that doesn't make sense": {
-			src:         "print >\n",
+			src:         "print >;",
 			expectedErr: true,
 		},
 		"invalid assignment target": {
-			src:         "1 = 1\n",
+			src:         "1 = 1;",
 			expectedErr: true,
 		},
 		"missing block closing brace": {
-			src:         "{\n",
+			src:         "{",
 			expectedErr: true,
 		},
 		"missing closing parentheses": {
