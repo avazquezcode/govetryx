@@ -64,7 +64,7 @@ This language only support basic types:
 | Operator | Description |
 | ----------- | ----------- |
 | print | prints anything to the stdout |
-| clock | returns the current timestamp in ms (based on the clock) |
+| clock | returns the current timestamp in nanoseconds (based on the clock) |
 | sleep(X) | add a delay of "X" ms to the execution of the program |
 | min(X, Y) | returns min |
 | max(X, Y) | returns max |
