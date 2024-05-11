@@ -53,15 +53,13 @@ const (
 	LowerOrEqual
 	Greater
 	GreaterOrEqual
+	Semicolon
 
 	// Inbuilt functions
 	Print
 
 	// End of file
 	EOF
-
-	// NewLine
-	NewLine
 )
 
 // ReservedWordsMapper is a map of our reserved words.

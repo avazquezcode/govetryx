@@ -34,11 +34,6 @@ func (s *Scanner) Scan() ([]*token.Token, error) {
 		}
 	}
 
-	// Add a new line to end statements properly in case the file doesn't have the extra line before EOF.
-	if s.shouldScanNewLine() {
-		s.tokens = append(s.tokens, token.NewToken(token.NewLine, "\n", nil, s.line))
-	}
-
 	// Add EOF
 	s.tokens = append(s.tokens, token.NewToken(token.EOF, "", nil, s.line))
 	return s.tokens, nil
@@ -122,6 +117,8 @@ func (s *Scanner) scanSingleChar(char rune) {
 		for s.peek() != '\n' && !s.isEnd() {
 			s.increment() // skip everything until the comment ends
 		}
+	case ';':
+		s.addToken(token.Semicolon, nil)
 	}
 }
 
@@ -175,15 +172,9 @@ func (s *Scanner) scanMatchableChars(char rune) {
 	}
 }
 
-// scanNewLine handles the scan of new lines, which have termination of line meaning in this language.
+// scanNewLine handles the scan of new lines.
 func (s *Scanner) scanNewLine() {
 	s.line++
-
-	if s.shouldScanNewLine() {
-		s.addToken(token.NewLine, nil)
-	}
-
-	// Ignore other new lines after the one recognized as a token, until reading something else.
 	for s.peek() == '\n' {
 		s.line++
 		s.increment()
@@ -309,22 +300,6 @@ func (s *Scanner) peekNext() rune {
 		return 0
 	}
 	return s.sourceCode[nextIdx]
-}
-
-// shouldScanNewLine indicates if the lexer should recognize a "new line" as a token.
-func (s *Scanner) shouldScanNewLine() bool {
-	// We skip in case there are no tokens yet, since in that case empty new lines
-	// does not represent a termination of a line
-	if len(s.tokens) == 0 {
-		return false
-	}
-
-	if _, shouldSkip := prevTokenToSkipNewLines[s.previousToken().Type]; shouldSkip {
-		// skip the new line
-		return false
-	}
-
-	return true
 }
 
 func (s *Scanner) previousToken() *token.Token {

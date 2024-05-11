@@ -1,7 +1,5 @@
 package scanner
 
-import "github.com/avazquezcode/govetryx/internal/domain/token"
-
 // singleChars are characters that should be scanned individually, and without any extra logic.
 var singleChars = map[rune]bool{
 	'(': true,
@@ -36,14 +34,6 @@ var ignorableChars = map[rune]bool{
 	' ':  true,
 	'\t': true,
 	'\r': true,
-}
-
-// prevTokenToSkipNewLines are tokens that make new lines to be skipped in the scanner if seen after them.
-// (eg: if we have "{\n", the new line should not be considered by the scanner as a token, since is not used for termination of line in such context).
-var prevTokenToSkipNewLines = map[token.Type]bool{
-	token.LeftBrace:  true,
-	token.RightBrace: true,
-	token.NewLine:    true,
 }
 
 // isLetter returns true if the rune is a letter.

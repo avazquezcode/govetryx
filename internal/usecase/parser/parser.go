@@ -146,9 +146,9 @@ func (p *Parser) variable() (ast.Statement, error) {
 		}
 	}
 
-	_, err = p.consume(token.NewLine)
+	_, err = p.consume(token.Semicolon)
 	if err != nil {
-		return nil, fmt.Errorf("expected a new line or EOF after the variable declaration: %w", err)
+		return nil, fmt.Errorf("expected a ';' after the variable declaration: %w", err)
 	}
 
 	return ast.NewVariableStatement(name, variableValue), nil
@@ -249,9 +249,9 @@ func (p *Parser) varShortDeclaratorStatement() (ast.Statement, error) {
 		return nil, err
 	}
 
-	_, err = p.consume(token.NewLine)
+	_, err = p.consume(token.Semicolon)
 	if err != nil {
-		return nil, fmt.Errorf("expected a new line or EOF after the variable declaration: %w", err)
+		return nil, fmt.Errorf("expected a ';' after the variable declaration: %w", err)
 	}
 
 	return ast.NewVariableStatement(name, initializer), nil
@@ -263,16 +263,16 @@ func (p *Parser) returnStatement() (ast.Statement, error) {
 	var value ast.Expression
 	var err error
 
-	if !p.is(token.NewLine) {
+	if !p.is(token.Semicolon) {
 		value, err = p.expression()
 		if err != nil {
 			return nil, err
 		}
 	}
 
-	_, err = p.consume(token.NewLine)
+	_, err = p.consume(token.Semicolon)
 	if err != nil {
-		return nil, fmt.Errorf("expected a new line or EOF after the return: %w", err)
+		return nil, fmt.Errorf("expected a ';' after the return: %w", err)
 	}
 
 	return ast.NewReturnStatement(returnLine, value), nil
@@ -281,9 +281,9 @@ func (p *Parser) returnStatement() (ast.Statement, error) {
 // breakStatement parses a break statement.
 func (p *Parser) breakStatement() (ast.Statement, error) {
 	breakLine := p.previous().Line
-	_, err := p.consume(token.NewLine)
+	_, err := p.consume(token.Semicolon)
 	if err != nil {
-		return nil, fmt.Errorf("expected a new line or EOF after the break: %w", err)
+		return nil, fmt.Errorf("expected a ';' after the break: %w", err)
 	}
 
 	return ast.NewBreakStatement(breakLine), nil
@@ -292,9 +292,9 @@ func (p *Parser) breakStatement() (ast.Statement, error) {
 // continueStatement parses a continue statement.
 func (p *Parser) continueStatement() (ast.Statement, error) {
 	continueLine := p.previous().Line
-	_, err := p.consume(token.NewLine)
+	_, err := p.consume(token.Semicolon)
 	if err != nil {
-		return nil, fmt.Errorf("expected a new line or EOF after the continue: %w", err)
+		return nil, fmt.Errorf("expected a ';' after the continue: %w", err)
 	}
 
 	return ast.NewContinueStatement(continueLine), nil
@@ -307,9 +307,9 @@ func (p *Parser) printStatement() (ast.Statement, error) {
 		return nil, err
 	}
 
-	_, err = p.consume(token.NewLine)
+	_, err = p.consume(token.Semicolon)
 	if err != nil {
-		return nil, fmt.Errorf("expected a new line or EOF after the print statement: %w", err)
+		return nil, fmt.Errorf("expected a ';' after the print statement: %w", err)
 	}
 
 	return ast.NewPrintStatement(value), nil
@@ -322,9 +322,9 @@ func (p *Parser) expressionStatement() (ast.Statement, error) {
 		return nil, err
 	}
 
-	_, err = p.consume(token.NewLine)
+	_, err = p.consume(token.Semicolon)
 	if err != nil {
-		return nil, fmt.Errorf("expected a new line or EOF after the expression: %w", err)
+		return nil, fmt.Errorf("expected a ';' after the expression: %w", err)
 	}
 
 	return ast.NewExpressionStatement(value), nil
@@ -648,7 +648,7 @@ func (p *Parser) synchronize() {
 	p.increment()
 
 	for !p.isEnd() {
-		if p.previous().Type == token.NewLine {
+		if p.previous().Type == token.Semicolon {
 			return
 		}
 

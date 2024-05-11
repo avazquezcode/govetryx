@@ -99,7 +99,7 @@ You can add comments by using `#`. Example:
 You can group expressions using parentheses. Example:
 
 ```python
-print (1+3) * 2 # will print 8, first it resolves the content of parentheses, then the multiplication.
+print (1+3) * 2; # will print 8, first it resolves the content of parentheses, then the multiplication.
 ```
 
 ## Variables
@@ -109,22 +109,22 @@ print (1+3) * 2 # will print 8, first it resolves the content of parentheses, th
 A variable can be declared empty (without assignment), and in such case, will be `null` by default:
 
 ```python
-dec a
-print a # prints null
+dec a;
+print a; # prints null
 ```
 
 A variable can be declared and assigned in the same line:
 
 ```python
-dec a = 1
-print a # prints 1
+dec a = 1;
+print a; # prints 1
 ```
 
 A variable can also be declared and assigned using the "short declarator" (similar as in _Go_):
 
 ```python
-a := 1
-print a # prints 1
+a := 1;
+print a; # prints 1
 ```
 
 ### Assignment
@@ -132,9 +132,9 @@ print a # prints 1
 You can assign a value to an existing variable:
 
 ```python
-dec a
-a = 1
-print a # prints 1
+dec a;
+a = 1;
+print a; # prints 1
 ```
 
 📌 *Important*: If the variable is not declared before assignment, the interpreter will throw an error.
@@ -145,13 +145,13 @@ The syntax for the if condition is:
 
 ```python
 if "a" == "a" {
-    print 1 # will print 1
+    print 1; # will print 1
 }
 
 # You can also wrap the condition with parentheses:
 
 if ("a" == "a") {
-    print 2 # will print 2
+    print 2; # will print 2
 }
 ```
 
@@ -159,9 +159,9 @@ If you want to add an else condition, you can also do it:
 
 ```python
 if ("a" <> "a") {
-    print 2 
+    print 2; 
 } else {
-    print 1 # will print 1 in this case
+    print 1; # will print 1 in this case
 }
 ```
 
@@ -170,42 +170,42 @@ if ("a" <> "a") {
 The syntax for the while loop is:
 
 ```python
-dec a = 10
+dec a = 10;
 while a < 20 {
-    print a # will print the value of "a" in the current iteration
-    a = a + 1
+    print a; # will print the value of "a" in the current iteration
+    a = a + 1;
 }
 ```
 
 You can also wrap the condition with parentheses:
 
 ```python
-dec a = 10
+dec a = 10;
 while (a < 20) {
-    print a # will print the value of "a" in the current iteration
-    a = a + 1
+    print a; # will print the value of "a" in the current iteration
+    a = a + 1;
 }
 ```
 
 You can use break to exit the loop:
 
 ```python
-dec a = 10
+dec a = 10;
 while (a < 20) {
-    break # will exit the loop inmediately
+    break; # will exit the loop inmediately
 }
 ```
 
 You can use continue to move to next iteration of the loop:
 
 ```python
-dec a = 10
+dec a = 10;
 while (a < 20) {
-    a = a + 1
+    a = a + 1;
     if a == 15 {
-        continue # in this case the 15 will not be printed to stdout
+        continue; # in this case the 15 will not be printed to stdout
     }
-    print a
+    print a;
 }
 ```
 
@@ -216,14 +216,14 @@ while (a < 20) {
 ```python
 # Without parameters:
 fn a() {
-    return "x" # note: if you ommit the return, it will return null by default
+    return "x"; # note: if you ommit the return, it will return null by default
 }
 ```
 
 ```python
 # With parameters:
 fn a(b, c) {
-    return b + c
+    return b + c;
 }
 ```
 
@@ -231,18 +231,18 @@ fn a(b, c) {
 
 ```python
 fn a(b, c) {
-    return b + c
+    return b + c;
 }
 
-print a(1, 2) # will print 3 
+print a(1, 2); # will print 3 
 ```
 
 If you want to assign the value to a variable, first you need to declare it, then assign it. Example:
 
 ```python
-dec x
-x = a(1, 2)
-print x # will print 3
+dec x;
+x = a(1, 2);
+print x; # will print 3
 ```
 
 ### Closures
@@ -251,19 +251,19 @@ Closures are supported in the language.
 
 ```python
 fn buildCounter() {
-  i := 0
+  i := 0;
   fn count() {
-    i = i + 1
-    print i
+    i = i + 1;
+    print i;
   }
 
   return count
 }
 
-dec counter
-counter = buildCounter()
+dec counter;
+counter = buildCounter();
 
-counter() # Prints 1
-counter() # Prints 2
-counter() # Prints 3
+counter(); # Prints 1
+counter(); # Prints 2
+counter(); # Prints 3
 ```

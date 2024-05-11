@@ -47,7 +47,6 @@ func TestScan(t *testing.T) {
 				token.NewToken(token.LeftParentheses, "(", nil, 1),
 				token.NewToken(token.RightParentheses, ")", nil, 1),
 				token.NewToken(token.RightParentheses, ")", nil, 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -59,7 +58,6 @@ func TestScan(t *testing.T) {
 				token.NewToken(token.Star, "*", nil, 1),
 				token.NewToken(token.Slash, "/", nil, 1),
 				token.NewToken(token.Modulus, "%", nil, 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -67,7 +65,6 @@ func TestScan(t *testing.T) {
 			src: ",",
 			expected: []*token.Token{
 				token.NewToken(token.Comma, ",", nil, 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -75,7 +72,6 @@ func TestScan(t *testing.T) {
 			src: "=",
 			expected: []*token.Token{
 				token.NewToken(token.Equal, "=", nil, 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -83,7 +79,6 @@ func TestScan(t *testing.T) {
 			src: "==",
 			expected: []*token.Token{
 				token.NewToken(token.EqualEqual, "==", nil, 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -91,7 +86,6 @@ func TestScan(t *testing.T) {
 			src: ">",
 			expected: []*token.Token{
 				token.NewToken(token.Greater, ">", nil, 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -99,7 +93,6 @@ func TestScan(t *testing.T) {
 			src: ">=",
 			expected: []*token.Token{
 				token.NewToken(token.GreaterOrEqual, ">=", nil, 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -107,7 +100,6 @@ func TestScan(t *testing.T) {
 			src: "<",
 			expected: []*token.Token{
 				token.NewToken(token.Lower, "<", nil, 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -115,7 +107,6 @@ func TestScan(t *testing.T) {
 			src: "<=",
 			expected: []*token.Token{
 				token.NewToken(token.LowerOrEqual, "<=", nil, 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -123,7 +114,6 @@ func TestScan(t *testing.T) {
 			src: "<>",
 			expected: []*token.Token{
 				token.NewToken(token.NotEqual, "<>", nil, 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -131,7 +121,6 @@ func TestScan(t *testing.T) {
 			src: "!",
 			expected: []*token.Token{
 				token.NewToken(token.Bang, "!", nil, 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -140,7 +129,6 @@ func TestScan(t *testing.T) {
 			src: ":=",
 			expected: []*token.Token{
 				token.NewToken(token.VarShortDeclarator, ":=", nil, 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -148,7 +136,6 @@ func TestScan(t *testing.T) {
 			src: "&&",
 			expected: []*token.Token{
 				token.NewToken(token.And, "&&", nil, 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -156,7 +143,6 @@ func TestScan(t *testing.T) {
 			src: "||",
 			expected: []*token.Token{
 				token.NewToken(token.Or, "||", nil, 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -170,7 +156,6 @@ func TestScan(t *testing.T) {
 			src: `""`,
 			expected: []*token.Token{
 				token.NewToken(token.String, "\"\"", "", 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -178,7 +163,6 @@ func TestScan(t *testing.T) {
 			src: `"hello"`,
 			expected: []*token.Token{
 				token.NewToken(token.String, "\"hello\"", "hello", 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -186,7 +170,6 @@ func TestScan(t *testing.T) {
 			src: `"123"`,
 			expected: []*token.Token{
 				token.NewToken(token.String, "\"123\"", "123", 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -194,7 +177,6 @@ func TestScan(t *testing.T) {
 			src: `123`,
 			expected: []*token.Token{
 				token.NewToken(token.Number, "123", float64(123), 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -202,7 +184,6 @@ func TestScan(t *testing.T) {
 			src: `123.12`,
 			expected: []*token.Token{
 				token.NewToken(token.Number, "123.12", float64(123.12), 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -210,7 +191,6 @@ func TestScan(t *testing.T) {
 			src: `0`,
 			expected: []*token.Token{
 				token.NewToken(token.Number, "0", float64(0), 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -218,7 +198,6 @@ func TestScan(t *testing.T) {
 			src: "hi",
 			expected: []*token.Token{
 				token.NewToken(token.Identifier, "hi", nil, 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},
@@ -237,7 +216,6 @@ func TestScan(t *testing.T) {
 				token.NewToken(token.Null, "null", nil, 1),
 				token.NewToken(token.Break, "break", nil, 1),
 				token.NewToken(token.Continue, "continue", nil, 1),
-				token.NewToken(token.NewLine, "\n", nil, 1),
 				token.NewToken(token.EOF, "", nil, 1),
 			},
 		},

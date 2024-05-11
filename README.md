@@ -21,7 +21,6 @@ It's been a while since I wanted to dive deeper into this topic, so this is just
 
 Some things I changed in comparison to the _Lox_ language:
 
-- [x] New lines should be used to terminate statements instead of semicolons (;) 
 - [x] Parentheses to wrap if/while conditions are not necessary (but can be added if wanted)
 - [x] Added modulus operator
 - [x] Changed some reserved words & chars used for some operators
